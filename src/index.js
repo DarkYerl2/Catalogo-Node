@@ -3,13 +3,13 @@ const express = require("express");
 const app = express();
 const path = require("path");
 const router = require("./routes");
-const port = process.env.PORT || 5000;
+const PORT = process.env.PORT || 5000;
 
 
 // Settings
-app.set("port", 5000);
+app.set("port", PORT);
 app.set("views", path.join(__dirname, "views"));
-app.engine("html", require("ejs").renderFil)
+app.engine("html", require("ejs").renderFile)
 app.set("view engine", "ejs");
 
 // Midlewares

@@ -1,22 +1,18 @@
-const { render } = require("ejs");
 const express = require("express");
-const app = express();
+const morgan = require("morgan")
 const path = require("path");
-const router = require("./routes");
-const PORT = process.env.PORT || 5000;
-
+const app = express();
 
 // Settings
-app.set("port", PORT);
+app.set("port", process.env.PORT || 5000);
 app.set("views", path.join(__dirname, "views"));
-app.engine("html", require("ejs").renderFile)
 app.set("view engine", "ejs");
 
 // Midlewares
-
+app.use(morgan('dev'));
 // Routes
 
-app.use(router);
+app.use(require("./routes"));
 
 // Static Files
 app.use(express.static( path.join(__dirname, "public")));
